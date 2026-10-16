@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LookCard from '../../components/LookCard.astro';
+import products from '../../data/products.json';
+import looks from '../../data/looks.json';
+import '../../styles/look-gallery-carousel.css';
+export function getStaticPaths() {
+  return looks.map((look) => ({ params: { slug: look.slug }, props: { look } }));
+}
+const { look } = Astro.props;
+const lookProducts = (look.productIds || [])
+  .map((id: string) => products.find((product) => product.id === id))
+  .filter((product: (typeof products)[number] | undefined): product is (typeof products)[number] => product !== undefined && product.available !== false)
+  .map((product) => ({ ...product, priceLabel: typeof product.price === 'number' ? new Intl.NumberFormat('en-IN', { style: 'currency', currency: product.currency || 'INR', maximumFractionDigits: 0 }).format(product.price) : 'See retailer' }));
+const currency = lookProducts[0]?.currency || 'INR';
+const total = lookProducts.reduce((sum: number, product) => sum + (typeof product.price === 'number' ? product.price : 0), 0);
+const totalLabel = new Intl.NumberFormat('en-IN', { style: 'currency', currency, maximumFractionDigits: 0 }).format(total);
+const relatedLooks = looks
+  .filter((candidate) => candidate.id !== look.id)
+  .map((candidate) => ({ candidate, score: (candidate.styles || []).filter((tag: string) => (look.styles || []).includes(tag)).length + (candidate.occasions || []).filter((tag: string) => (look.occasions || []).includes(tag)).length + (candidate.places || []).filter((tag: string) => (look.places || []).includes(tag)).length }))
+  .sort((a, b) => b.score - a.score)
+  .slice(0, 5)
+  .map(({ candidate }) => candidate);
+type LookGalleryImage = string | { src?: string; image?: string; alt?: string; label?: string };
+const gallerySlides: { src: string; alt: string; demo?: string }[] = [];
+const seenSources = new Set<string>();
+function addSlide(src: string | undefined, alt: string, demo?: string) {
+  if (!src || seenSources.has(src)) return;
+  seenSources.add(src);
+  gallerySlides.push({ src, alt, demo: demo || look.demoImage });
+}
+addSlide(look.image, look.title, look.demoImage);
+const galleryItems = (((look as unknown) as { galleryImages?: LookGalleryImage[] }).galleryImages || []);
+for (const [index, item] of galleryItems.entries()) {
+  if (typeof item === 'string') addSlide(item, `${look.title} — additional view ${index + 2}`);
+  else addSlide(item.src || item.image, item.alt || `${look.title} — additional view ${index + 2}`);
+}
+const settingLabel = (value: string) => ({office:'Office / workplace',campus:'Campus',cafe:'Cafe / coffee',restaurant:'Restaurant',bar:'Bar / lounge',cinema:'Cinema',city:'City / street',shopping:'Shopping',travel:'Travel / airport',outdoors:'Outdoors',gym:'Gym / training',home:'Home', 'family-home':'Family home',temple:'Temple',mosque:'Mosque','festival-ground':'Festival ground','wedding-venue':'Wedding venue',hotel:'Hotel',banquet:'Banquet hall'}[value] || value.replaceAll('-', ' '));
+const displayLabel = (value: string) => value.replaceAll('-', ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+---
+<BaseLayout title={`${look.title} — Men’s Style File | Attire Labs Co.`} description={look.subtitle}>
+  <div class="look-detail-page men-look-detail-page">
+    <section class="look-detail-layout look-page-fullbleed men-look-detail-layout" aria-label={`${look.title} look and shopping list`}>
+      <div class="look-detail-visual look-gallery-rail" data-look-gallery aria-label="Look photo gallery">
+        {gallerySlides.length === 0 && <div class="image-placeholder"><strong>LOOK PHOTOS COMING SOON</strong><span>Add this look’s cover and additional photos through Catalogue Studio.</span></div>}
+        {gallerySlides.map((slide, index) => <figure class="look-gallery-frame" data-gallery-frame data-gallery-index={index}>
+          <img src={slide.src} data-demo-src={slide.demo} alt={slide.alt} loading={index === 0 ? 'eager' : 'lazy'} data-fallback />
+          <div class="image-placeholder" hidden><strong>LOOK PHOTO SLOT</strong><span>{slide.src}</span></div>
+          {gallerySlides.length > 1 && <>
+            <button class="gallery-arrow gallery-arrow-prev" type="button" data-gallery-prev aria-label="Previous photo"><span class="gallery-arrow-desktop" aria-hidden="true">↑</span><span class="gallery-arrow-mobile" aria-hidden="true">‹</span></button>
+            <button class="gallery-arrow gallery-arrow-next" type="button" data-gallery-next aria-label="Next photo"><span class="gallery-arrow-desktop" aria-hidden="true">↓</span><span class="gallery-arrow-mobile" aria-hidden="true">›</span></button>
+          </>}
+        </figure>)}
+      </div>
+      <nav class="look-gallery-pagination" data-gallery-pagination data-count={gallerySlides.length} aria-label="Choose look photo">
+        {gallerySlides.map((slide, index) => <button type="button" data-gallery-dot={index} class:list={{active:index===0}} aria-label={`Show photo ${index+1}`} aria-pressed={index===0}><span class="sr-only">Photo {index+1}</span></button>)}
+      </nav>
+      <aside class="look-detail-panel look-detail-sticky">
+        <div class="breadcrumb"><a href="/">HOME</a><span>/</span><a href="/looks/">SHOP THE LOOK</a><span>/</span><span>{look.title.toUpperCase()}</span></div>
+        <div class="eyebrow">THE MEN’S LOOK FILE · {look.category}</div>
+        <h1>{look.title}<span class="heading-period">.</span></h1>
+        <p class="look-description">{look.subtitle}</p>
+        <div class="look-context-chips">
+          {look.dressCode && <span class="look-context-chip">DRESS CODE · {displayLabel(look.dressCode)}</span>}
+          {(look.places || []).slice(0,3).map((place: string) => <span class="look-context-chip">{settingLabel(place)}</span>)}
+          {(look.seasons || []).filter((x: string) => x !== 'all-season').slice(0,2).map((season: string) => <span class="look-context-chip">{displayLabel(season)}</span>)}
+        </div>
+        <div class="look-stats"><div><span>THE EDIT</span><strong>{lookProducts.length} pieces</strong></div><div><span>GUIDE TOTAL*</span><strong>{totalLabel}</strong></div></div>
+        <a class="button button-dark buy-button desktop-shop-button" href="#shop-the-pieces">SHOP THE PIECES <span>↓</span></a>
+        {look.stylingNotes && <section class="look-styling-notes"><div class="eyebrow">WHY THIS WORKS</div><p>{look.stylingNotes}</p></section>}
+        <div class="look-piece-list" id="shop-the-pieces">
+          <div class="piece-list-heading"><strong>SHOP THIS LOOK</strong><span>{String(lookProducts.length).padStart(2, '0')} ITEMS</span></div>
+          {lookProducts.map((product, index) => <div class="piece-row">
+            <div class="piece-row-copy"><span class="piece-number">LOOK PIECE {String(index + 1).padStart(2, '0')}</span><span class="piece-title">{product.name}</span><span class="piece-price">{product.priceLabel} <em>guide price</em></span></div>
+            <a class="piece-buy" href={product.affiliateUrl || '#'} target="_blank" rel="sponsored nofollow noopener" aria-label={`Shop ${product.name} with ${product.retailer || 'the retailer'}`}>{product.retailer === 'Amazon India' ? 'AMAZON' : 'SHOP'} ↗</a>
+          </div>)}
+        </div>
+        <p class="look-total-note">*Guide total is based on the prices saved in this catalogue. Prices, sellers, sizes and availability can change; confirm details on the retailer’s website.</p>
+        <p class="disclosure">Some links may be affiliate links. We may earn a commission on qualifying purchases at no additional cost to you.</p>
+      </aside>
+    </section>
+    <a class="mobile-sticky-shop" href="#shop-the-pieces">SHOP THE PIECES <span>↓</span></a>
+    {relatedLooks.length > 0 && <section class="section look-related-looks site-shell"><div class="section-head"><div><div class="eyebrow">KEEP EXPLORING</div><h2 class="serif-display">More looks for this kind of plan<span class="heading-period">.</span></h2><p>Use a related look as a starting point, then adapt it to your own venue, weather and dress code.</p></div><a class="text-link" href="/looks/">ALL LOOKS ↗</a></div><div class="look-grid related-look-grid">{relatedLooks.map((relatedLook) => <LookCard look={relatedLook} />)}</div></section>}
+  </div>
+  <script>
+    const gallery = document.querySelector<HTMLElement>('[data-look-gallery]');
+    const pagination = document.querySelector<HTMLElement>('[data-gallery-pagination]');
+
+    if (gallery && pagination) {
+      const frames = [...gallery.querySelectorAll<HTMLElement>('[data-gallery-frame]')];
+      const dots = [...pagination.querySelectorAll<HTMLButtonElement>('[data-gallery-dot]')];
+      const mobileQuery = window.matchMedia('(max-width: 760px)');
+      let activeIndex = 0;
+      let scrollFrame = 0;
+
+      const updateActive = (index: number) => {
+        if (!frames.length) return;
+        activeIndex = Math.max(0, Math.min(index, frames.length - 1));
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === activeIndex);
+          dot.setAttribute('aria-pressed', i === activeIndex ? 'true' : 'false');
+        });
+      };
+
+      const goTo = (index: number) => {
+        const target = frames[index];
+        if (!target) return;
+        if (mobileQuery.matches) {
+          const left = target.getBoundingClientRect().left - gallery.getBoundingClientRect().left + gallery.scrollLeft;
+          gallery.scrollTo({ left, behavior: 'smooth' });
+        } else {
+          const top = target.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+        updateActive(index);
+      };
+
+      dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
+      frames.forEach((frame, index) => {
+        frame.querySelector<HTMLButtonElement>('[data-gallery-prev]')?.addEventListener('click', () => goTo((index - 1 + frames.length) % frames.length));
+        frame.querySelector<HTMLButtonElement>('[data-gallery-next]')?.addEventListener('click', () => goTo((index + 1) % frames.length));
+      });
+
+      const observeRoot = mobileQuery.matches ? gallery : null;
+      if ('IntersectionObserver' in window && frames.length > 1) {
+        const observer = new IntersectionObserver((entries) => {
+          const mostVisible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (mostVisible) updateActive(Number((mostVisible.target as HTMLElement).dataset.galleryIndex || 0));
+        }, { root: observeRoot, threshold: [0.45, 0.65, 0.85] });
+        frames.forEach((frame) => observer.observe(frame));
+      }
+
+      const syncOnScroll = () => {
+        if (scrollFrame) cancelAnimationFrame(scrollFrame);
+        scrollFrame = requestAnimationFrame(() => {
+          const rootRect = mobileQuery.matches ? gallery.getBoundingClientRect() : { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+          let closest = 0;
+          let nearest = Number.POSITIVE_INFINITY;
+          frames.forEach((frame, index) => {
+            const rect = frame.getBoundingClientRect();
+            const distance = mobileQuery.matches
+              ? Math.abs((rect.left + rect.width / 2) - (rootRect.left + rootRect.width / 2))
+              : Math.abs((rect.top + rect.height / 2) - (rootRect.top + rootRect.height / 2));
+            if (distance < nearest) { nearest = distance; closest = index; }
+          });
+          updateActive(closest);
+        });
+      };
+      gallery.addEventListener('scroll', syncOnScroll, { passive: true });
+      window.addEventListener('scroll', () => { if (!mobileQuery.matches) syncOnScroll(); }, { passive: true });
+      mobileQuery.addEventListener?.('change', syncOnScroll);
+    }
+
+    document.querySelectorAll<HTMLAnchorElement>('.mobile-sticky-shop').forEach((button) => button.addEventListener('click', () => {
+      const target = document.querySelector('#shop-the-pieces');
+      if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 0);
+    }));
+  </script>
+</BaseLayout>

@@ -1,0 +1,349 @@
+/* Attire Labs look gallery — desktop vertical stack, mobile horizontal carousel. */
+
+.men-look-detail-page .men-look-detail-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  align-items: start !important;
+  gap: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* Desktop: images occupy only the left half and stack naturally down the page. */
+.men-look-detail-page .men-look-detail-layout > .look-detail-visual {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: start !important;
+  gap: 0 !important;
+  width: 100% !important;
+  max-width: 50vw !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  overscroll-behavior: auto !important;
+}
+
+.men-look-detail-page .men-look-detail-layout .look-gallery-frame {
+  position: relative !important;
+  display: block !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 4 / 5 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  scroll-margin-top: 80px;
+  background: #f1f1ef;
+}
+
+.men-look-detail-page .men-look-detail-layout .look-gallery-frame > img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.men-look-detail-page .men-look-detail-layout .look-gallery-frame .image-placeholder {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+}
+
+.men-look-detail-page .men-look-detail-layout > .look-detail-panel {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  position: static !important;
+  top: auto !important;
+  align-self: start !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: clamp(22px, 3vw, 44px) clamp(20px, 3vw, 46px) 34px !important;
+  overflow: visible !important;
+  overscroll-behavior: auto !important;
+  background: #fff;
+}
+
+/* No numeric 01/05 badge. Desktop users scroll the page or use up/down controls. */
+.men-look-detail-page .look-gallery-pagination {
+  display: none !important;
+}
+
+.men-look-detail-page .look-gallery-frame .gallery-arrow {
+  position: absolute !important;
+  z-index: 5 !important;
+  display: grid !important;
+  place-items: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  border: 1px solid rgb(255 255 255 / 75%) !important;
+  border-radius: 50% !important;
+  background: rgb(255 255 255 / 92%) !important;
+  color: #111 !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 14%) !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.men-look-detail-page .look-gallery-frame .gallery-arrow-prev {
+  top: 14px !important;
+  right: 14px !important;
+  bottom: auto !important;
+  left: auto !important;
+}
+
+.men-look-detail-page .look-gallery-frame .gallery-arrow-next {
+  right: 14px !important;
+  bottom: 14px !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+.men-look-detail-page .gallery-arrow-mobile { display: none; }
+.men-look-detail-page .gallery-arrow-desktop { display: inline; }
+
+/* Mobile: one 4:5 photo per slide, horizontal touch-swipe and snap. */
+@media (max-width: 760px) {
+  .men-look-detail-page .men-look-detail-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 0 28px !important;
+  }
+
+  .men-look-detail-page .men-look-detail-layout > .look-detail-visual {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-self: auto !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+    gap: 0 !important;
+  }
+
+  .men-look-detail-page .men-look-detail-layout > .look-detail-visual::-webkit-scrollbar {
+    display: none;
+  }
+
+  .men-look-detail-page .men-look-detail-layout .look-gallery-frame {
+    position: relative !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 4 / 5 !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: always !important;
+  }
+
+  .men-look-detail-page .men-look-detail-layout .look-gallery-frame > img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .men-look-detail-page .men-look-detail-layout > .look-gallery-pagination {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 7px !important;
+    width: 100% !important;
+    min-height: 34px !important;
+    margin: 0 !important;
+    padding: 0 16px !important;
+    background: #fff !important;
+  }
+
+  .men-look-detail-page .look-gallery-pagination button {
+    display: block !important;
+    flex: 0 0 7px !important;
+    width: 7px !important;
+    height: 7px !important;
+    min-width: 7px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: 1px solid #777 !important;
+    border-radius: 50% !important;
+    background: #fff !important;
+    color: transparent !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+
+  .men-look-detail-page .look-gallery-pagination button.active {
+    border-color: #111 !important;
+    background: #111 !important;
+  }
+
+  .men-look-detail-page .look-gallery-pagination[data-count="0"],
+  .men-look-detail-page .look-gallery-pagination[data-count="1"] {
+    display: none !important;
+  }
+
+  .men-look-detail-page .men-look-detail-layout > .look-detail-panel {
+    position: static !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 18px 16px 78px !important;
+    overflow: visible !important;
+  }
+
+  .men-look-detail-page .look-gallery-frame .gallery-arrow {
+    width: 38px !important;
+    height: 38px !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%);
+    font-size: 26px !important;
+  }
+
+  .men-look-detail-page .look-gallery-frame .gallery-arrow-prev {
+    top: 50% !important;
+    left: 12px !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .men-look-detail-page .look-gallery-frame .gallery-arrow-next {
+    top: 50% !important;
+    right: 12px !important;
+    left: auto !important;
+    bottom: auto !important;
+  }
+
+  .men-look-detail-page .gallery-arrow-mobile { display: inline !important; }
+  .men-look-detail-page .gallery-arrow-desktop { display: none !important; }
+
+  .men-look-detail-page .mobile-sticky-shop {
+    position: fixed !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 90 !important;
+    min-height: 48px !important;
+    padding: 0 17px !important;
+    background: #111 !important;
+    color: #fff !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    letter-spacing: .12em !important;
+    box-shadow: 0 2px 14px rgb(0 0 0 / 18%) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .men-look-detail-page .men-look-detail-layout > .look-detail-visual {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Final interaction refinements: sticky editorial panel on desktop, subtle centered controls on mobile. */
+@media (min-width: 761px) {
+  .men-look-detail-page .men-look-detail-layout > .look-detail-panel {
+    position: sticky !important;
+    top: 52px !important;
+    align-self: start !important;
+    height: calc(100vh - 52px) !important;
+    max-height: calc(100vh - 52px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    scrollbar-width: thin;
+    scrollbar-color: #d2d2d2 transparent;
+  }
+
+  /* Desktop interaction is natural page scrolling: no arrows over the photographs. */
+  .men-look-detail-page .look-gallery-frame .gallery-arrow {
+    display: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .men-look-detail-page .look-gallery-frame .gallery-arrow {
+    display: grid !important;
+    place-items: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    padding: 0 !important;
+    border: 1px solid rgb(255 255 255 / 58%) !important;
+    border-radius: 50% !important;
+    background: rgb(255 255 255 / 48%) !important;
+    color: #111 !important;
+    box-shadow: 0 1px 8px rgb(0 0 0 / 10%) !important;
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+    line-height: 0 !important;
+    text-align: center !important;
+  }
+
+  .men-look-detail-page .look-gallery-frame .gallery-arrow > span {
+    display: grid !important;
+    place-items: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 29px !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    text-align: center !important;
+    transform: translateY(-1px);
+  }
+
+  .men-look-detail-page .look-gallery-frame .gallery-arrow-prev {
+    left: 12px !important;
+    right: auto !important;
+  }
+
+  .men-look-detail-page .look-gallery-frame .gallery-arrow-next {
+    right: 12px !important;
+    left: auto !important;
+  }
+}

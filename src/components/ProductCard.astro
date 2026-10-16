@@ -1,0 +1,18 @@
+---
+const { product, badge = '' } = Astro.props;
+const price = typeof product.price === 'number' ? new Intl.NumberFormat('en-IN', { style: 'currency', currency: product.currency || 'INR', maximumFractionDigits: 0 }).format(product.price) : '';
+---
+<article class="product-card" data-product-card data-name={product.name.toLowerCase()} data-category={(product.category || "").toLowerCase()} data-tags={(product.tags || []).join(' ').toLowerCase()} data-audience={product.audience || 'unisex'} data-price={product.price || 0}>
+  <a class="product-image" href={product.affiliateUrl || '#'} target="_blank" rel="sponsored nofollow noopener" aria-label={`Find ${product.name} at the retailer`}>
+    {badge && <span class="product-badge">{badge}</span>}
+    <img src={product.image} data-demo-src={product.demoImage} alt={product.name} loading="lazy" data-fallback />
+    <div class="image-placeholder" hidden><strong>YOUR PRODUCT IMAGE</strong><span>{product.image}</span></div>
+    <span class="image-quick-link">SHOP RETAILER ↗</span>
+  </a>
+  <div class="product-info">
+    <div class="product-title-row"><div><span class="product-title">{product.name}</span></div>{price && <div class="product-price">{price}</div>}</div>
+    <div class="product-actions">
+      <a class="button button-dark" href={product.affiliateUrl || '#'} target="_blank" rel="sponsored nofollow noopener">Shop with retailer ↗</a>
+    </div>
+  </div>
+</article>

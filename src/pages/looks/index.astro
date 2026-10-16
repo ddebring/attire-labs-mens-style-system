@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LookCard from '../../components/LookCard.astro';
+import looks from '../../data/looks.json';
+---
+<BaseLayout title="Men’s Looks — Attire Labs Co." description="Find considered menswear by occasion, place, dress code, season and weather. Browse office outfits, date nights, travel, weddings and everyday style.">
+  <div class="site-shell look-finder-page men-look-finder">
+    <section class="page-intro finder-intro"><div class="eyebrow">THE MEN’S STYLE FILE · INDIA</div><h1 id="finder-heading" class="page-heading serif-display">Shop the look<span class="heading-period">.</span></h1><p>Start with the plan or the place. Explore outfit formulas built around work, dates, weekends, travel, weddings and the weather.</p></section>
+    <section class="section finder-section">
+      <div class="finder-toolbar men-finder-toolbar">
+        <label class="finder-search"><span class="sr-only">Search looks</span><input id="look-search" type="search" placeholder="Search office, linen, wedding, monsoon…" /></label>
+        <label class="finder-select"><span class="sr-only">Filter by occasion</span><select id="look-occasion"><option value="all">All occasions</option>
+          <option value="casual-everyday">Casual & everyday</option><option value="office-smart">Office & smart casual</option><option value="business-casual">Business casual</option><option value="interview">Job interview</option><option value="first-job">First job / new workplace</option><option value="date-night">Date night</option><option value="dinner-date">Dinner date</option><option value="going-out">Party / night out</option><option value="brunch">Brunch / daytime plans</option><option value="college-looks">College & campus</option><option value="travel-weekend">Travel & weekend</option><option value="airport-travel">Airport / travel day</option><option value="vacation-resort">Vacation / resort</option><option value="athleisure">Gym / active day</option><option value="street-style">Street style</option><option value="old-money">Old money / quiet luxury</option><option value="wedding-guest">Wedding guest</option><option value="wedding-functions">Wedding functions</option><option value="family-gathering">Family gathering</option><option value="formal-event">Formal event</option>
+        </select></label>
+        <label class="finder-select"><span class="sr-only">Filter by place or setting</span><select id="look-place"><option value="all">Any place / setting</option><option value="office">Office / workplace</option><option value="campus">Campus</option><option value="cafe">Cafe / coffee</option><option value="restaurant">Restaurant</option><option value="bar">Bar / lounge</option><option value="cinema">Cinema</option><option value="city">City / street</option><option value="travel">Travel / airport</option><option value="outdoors">Outdoors</option><option value="beach-resort">Beach / resort</option><option value="gym">Gym / training</option><option value="family-home">Family home</option><option value="temple">Temple / place of worship</option><option value="mosque">Mosque</option><option value="wedding-venue">Wedding venue</option><option value="hotel">Hotel</option><option value="banquet">Banquet hall</option><option value="event-venue">Event venue</option></select></label>
+        <label class="finder-select"><span class="sr-only">Filter by style</span><select id="look-style"><option value="all">All style languages</option><option value="minimal">Minimal</option><option value="quiet-luxury">Quiet luxury</option><option value="old-money">Old money</option><option value="smart-casual">Smart casual</option><option value="business-casual">Business casual</option><option value="tailored">Tailored</option><option value="street-style">Street style</option><option value="athleisure">Athleisure</option><option value="ethnic">Ethnic / traditional</option><option value="traditional">Traditional</option><option value="wedding-guest">Wedding guest</option><option value="college">College</option></select></label>
+        <label class="finder-select finder-sort"><span class="sr-only">Sort looks</span><select id="look-sort"><option value="featured">Featured first</option><option value="title">Title A–Z</option></select></label>
+        <span class="result-count" id="look-count">{looks.length} looks</span>
+      </div>
+      <div class="look-grid finder-grid" id="look-grid">{looks.map((look) => <LookCard look={look} />)}</div>
+      <p class="empty-state" id="look-empty" hidden>No looks match those filters yet. Try another occasion, place or style.</p>
+    </section>
+    <p class="disclosure">Some retailer links may be affiliate links. Listed prices are guides only; confirm current price, seller, size and availability on the retailer site.</p>
+  </div>
+  <script>
+    const grid = document.querySelector<HTMLElement>('#look-grid');
+    const cards = [...(grid?.querySelectorAll<HTMLElement>('[data-look-card]') || [])];
+    const search = document.querySelector<HTMLInputElement>('#look-search');
+    const occasion = document.querySelector<HTMLSelectElement>('#look-occasion');
+    const place = document.querySelector<HTMLSelectElement>('#look-place');
+    const style = document.querySelector<HTMLSelectElement>('#look-style');
+    const sort = document.querySelector<HTMLSelectElement>('#look-sort');
+    const count = document.querySelector<HTMLElement>('#look-count');
+    const empty = document.querySelector<HTMLElement>('#look-empty');
+    const heading = document.querySelector<HTMLElement>('#finder-heading');
+    const defaultHeading = heading?.textContent?.trim() || 'Shop the look.';
+    const params = new URLSearchParams(window.location.search);
+    if (search && params.get('q')) search.value = params.get('q') || '';
+    if (occasion && params.get('occasion')) occasion.value = params.get('occasion') || 'all';
+    if (place && params.get('place')) place.value = params.get('place') || 'all';
+    if (style && params.get('style')) style.value = params.get('style') || 'all';
+    function applyLookFilters() {
+      const query = (search?.value || '').trim().toLowerCase();
+      const selectedOccasion = occasion?.value || 'all';
+      const selectedPlace = place?.value || 'all';
+      const selectedStyle = style?.value || 'all';
+      const visible = cards.filter((card) => {
+        const has = (key: string, value: string) => value === 'all' || (card.dataset[key] || '').split(/\s+/).includes(value);
+        const matchesSearch = !query || (card.dataset.search || '').includes(query);
+        const matches = has('occasions', selectedOccasion) && has('places', selectedPlace) && has('styles', selectedStyle) && matchesSearch;
+        card.hidden = !matches;
+        return matches;
+      });
+      visible.sort((a,b) => sort?.value === 'title' ? (a.dataset.title || '').localeCompare(b.dataset.title || '') : 0);
+      visible.forEach((card) => grid?.append(card));
+      if (count) count.textContent = `${visible.length} look${visible.length===1?'':'s'}`;
+      if (empty) empty.hidden = visible.length > 0;
+      if (heading) {
+        const occasionLabel = occasion?.selectedOptions[0]?.textContent?.trim();
+        const placeLabel = place?.selectedOptions[0]?.textContent?.trim();
+        const styleLabel = style?.selectedOptions[0]?.textContent?.trim();
+        if (selectedOccasion !== 'all' && occasionLabel) heading.textContent = `${occasionLabel} looks.`;
+        else if (selectedPlace !== 'all' && placeLabel) heading.textContent = `Looks for ${placeLabel.toLowerCase()}.`;
+        else if (selectedStyle !== 'all' && styleLabel) heading.textContent = `${styleLabel} looks.`;
+        else heading.textContent = defaultHeading;
+      }
+    }
+    [search, occasion, place, style, sort].forEach((el) => el?.addEventListener(el instanceof HTMLInputElement ? 'input' : 'change', applyLookFilters));
+    applyLookFilters();
+  </script>
+</BaseLayout>

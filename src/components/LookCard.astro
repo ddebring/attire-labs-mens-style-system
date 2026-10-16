@@ -1,0 +1,27 @@
+---
+import products from '../data/products.json';
+const { look } = Astro.props;
+const linkedProducts = (look.productIds || [])
+  .map((id: string) => products.find((product) => product.id === id))
+  .filter((product: (typeof products)[number] | undefined): product is (typeof products)[number] => product !== undefined && product.available !== false);
+const total = linkedProducts.reduce((sum: number, product: (typeof products)[number]) => sum + (typeof product.price === 'number' ? product.price : 0), 0);
+const currency = linkedProducts[0]?.currency || 'INR';
+const totalLabel = new Intl.NumberFormat('en-IN', { style: 'currency', currency, maximumFractionDigits: 0 }).format(total);
+const occasionValues = (look.occasions || []).join(' ');
+const styleValues = (look.styles || []).join(' ');
+const placeValues = (look.places || []).join(' ');
+const seasonValues = (look.seasons || []).join(' ');
+const weatherValues = (look.weather || []).join(' ');
+const tagValues = (look.tags || []).join(' ');
+const searchValues = `${look.title} ${look.subtitle} ${look.category} ${look.dressCode || ''} ${(look.stylingNotes || '')} ${occasionValues.replaceAll('-', ' ')} ${styleValues.replaceAll('-', ' ')} ${placeValues.replaceAll('-', ' ')} ${seasonValues.replaceAll('-', ' ')} ${weatherValues.replaceAll('-', ' ')} ${tagValues.replaceAll('-', ' ')}`;
+---
+<article class="look-tile look-card" data-look-card data-title={look.title.toLowerCase()} data-category={(look.category || '').toLowerCase()} data-audience="him" data-occasions={occasionValues} data-styles={styleValues} data-places={placeValues} data-seasons={seasonValues} data-weather={weatherValues} data-tags={tagValues} data-search={searchValues.toLowerCase()}>
+  <a class="look-tile-link" href={`/looks/${look.slug}/`} aria-label={`Shop the ${look.title} look — estimated total ${totalLabel}`}>
+    <img src={look.image} data-demo-src={look.demoImage} alt={look.title} loading="lazy" data-fallback />
+    <div class="image-placeholder" hidden><strong>LOOK IMAGE SLOT</strong><span>Upload this look’s cover in Catalogue Studio.</span></div>
+  </a>
+  <div class="look-tile-meta">
+    <span class="look-tile-price">{totalLabel} <small>GUIDE TOTAL*</small></span>
+    <a class="look-tile-action" href={`/looks/${look.slug}/`}>SHOP THE LOOK <span aria-hidden="true">↗</span></a>
+  </div>
+</article>

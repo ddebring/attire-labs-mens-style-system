@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LookCard from '../components/LookCard.astro';
+import looks from '../data/looks.json';
+const featuredLooks = looks.filter((look) => look.featured).slice(0, 6);
+const findLook = (slug: string) => looks.find((look) => look.slug === slug) || looks[0];
+const occasionCards = [
+  { no: '01', title: 'Office & work', copy: 'Business casual, client meetings and desk-to-dinner layers.', href: '/looks/?occasion=office-smart', look: findLook('quiet-luxury-every-day'), tag: 'WORKWEAR' },
+  { no: '02', title: 'Date night', copy: 'A little sharper, never overdone. Dinner, drinks and the first date.', href: '/looks/?occasion=date-night', look: findLook('date-night-him'), tag: 'AFTER DARK' },
+  { no: '03', title: 'Casual & city', copy: 'Coffee runs, shopping, cinema and weekend wandering.', href: '/looks/?occasion=casual-everyday', look: findLook('the-city-weekend'), tag: 'EVERYDAY' },
+  { no: '04', title: 'Travel & weekends', copy: 'Comfortable formulas for airport days, drives and getaways.', href: '/looks/?occasion=travel-weekend', look: findLook('the-city-weekend'), tag: 'ON THE MOVE' },
+  { no: '05', title: 'College & campus', copy: 'Repeatable fits for lectures, campus events and plans after class.', href: '/looks/?occasion=college-looks', look: findLook('campus-hours-him'), tag: 'CAMPUS' },
+  { no: '06', title: 'Gym & movement', copy: 'Practical layers for training, active days and everything after.', href: '/looks/?occasion=athleisure', look: findLook('off-duty-movement-him'), tag: 'PERFORMANCE' },
+  { no: '07', title: 'Wedding guest', copy: 'Traditional occasion dressing, receptions and family celebrations.', href: '/looks/?occasion=wedding-guest', look: findLook('the-wedding-invite-him'), tag: 'OCCASION' },
+  { no: '08', title: 'First impressions', copy: 'Job interviews, a first job and important meetings. Look capable without overdoing it.', href: '/looks/?occasion=interview', look: findLook('quiet-luxury-every-day'), tag: 'MAKE IT COUNT' },
+];
+const occasionSlugs = ['quiet-luxury-every-day', 'date-night-him', 'the-wedding-invite-him', 'the-city-weekend', 'campus-hours-him', 'off-duty-movement-him'];
+const occasionLooks = occasionSlugs.map(findLook).filter(Boolean);
+---
+<BaseLayout title="Attire Labs Co. — The Men’s Style File" description="Occasion-first menswear for work, date nights, weekends, travel and weddings. Find the look, then shop the pieces.">
+  <div class="men-home">
+    <section class="men-hero site-shell">
+      <div class="men-hero-copy">
+        <div class="eyebrow">ATTIRE LABS CO. · THE MEN’S STYLE FILE</div>
+        <h1 class="serif-display">Dress for<br /><em>the plan.</em></h1>
+        <p>Office, first date, city weekend or family celebration. Start with where you’re going, get a considered outfit formula, then shop the pieces that make it work.</p>
+        <div class="men-hero-actions"><a class="button button-dark" href="/looks/">FIND YOUR LOOK ↗</a><a class="text-link" href="/style/him/">EXPLORE THE STYLE FILE ↗</a></div>
+        <div class="men-hero-meta"><span>OCCASION-FIRST OUTFITS</span><span>INDIA · EVERYDAY TO OCCASION</span></div>
+      </div>
+      <a class="men-hero-visual" href={`/looks/${findLook('quiet-luxury-every-day').slug}/`} aria-label="Discover the quiet luxury everyday look">
+        <img src={findLook('quiet-luxury-every-day').image} data-demo-src={findLook('quiet-luxury-every-day').demoImage} alt="Men’s smart casual styling inspiration" loading="eager" data-fallback />
+        <div class="image-placeholder" hidden><strong>UPLOAD YOUR HERO LOOK</strong><span>Use Catalogue Studio to add a real cover image.</span></div>
+        <span class="men-hero-index">THE LOOK FILE / 001</span>
+        <span class="men-hero-card"><span>THE EVERYDAY FORMULA</span><strong>Quiet Luxury,<br />Every Day.</strong><i>SHOP THE LOOK ↗</i></span>
+      </a>
+    </section>
+
+    <section class="men-occasion-section site-shell" aria-labelledby="occasion-heading">
+      <div class="men-section-head"><div><div class="eyebrow">START WITH THE PLAN</div><h2 id="occasion-heading" class="serif-display">Where are you headed?</h2></div><p>Good style is situational. Pick the place, occasion or energy; the outfit follows.</p></div>
+      <div class="men-occasion-grid">
+        {occasionCards.map((card) => <a class="men-occasion-card" href={card.href}>
+          <div class="men-occasion-photo"><img src={card.look.image} data-demo-src={card.look.demoImage} alt={`${card.title} menswear inspiration`} loading="lazy" data-fallback /><div class="image-placeholder" hidden><strong>LOOK IMAGE SLOT</strong><span>Upload a male outfit photo in Catalogue Studio.</span></div><span class="men-occasion-no">{card.no}</span></div>
+          <div class="men-occasion-copy"><span class="eyebrow">{card.tag}</span><h3 class="serif-display">{card.title}</h3><p>{card.copy}</p><span class="men-occasion-link">EXPLORE THE EDIT ↗</span></div>
+        </a>)}
+      </div>
+    </section>
+
+    <section class="men-festive-section">
+      <div class="men-festive-inner site-shell">
+        <div class="men-festive-copy"><div class="eyebrow">THE MEN’S OCCASION EDIT</div><h2 class="serif-display">Dress well,<br /><em>wherever life goes.</em></h2><p>From first impressions and date nights to weekends away, build a look around the plan, the setting and the way you want to feel.</p><a class="button button-light" href="/looks/">EXPLORE ALL LOOKS ↗</a><div class="men-festive-note">A ROTATING EDIT · SIX LOOKS</div></div>
+        <div class="men-festive-carousel" data-festive-carousel aria-label="Rotating men's occasion looks">
+          {occasionLooks.map((look, index) => <a class:list={['men-festive-slide', { 'is-active': index === 0 }]} href={`/looks/${look.slug}/`} data-festive-slide data-index={index} aria-hidden={index === 0 ? 'false' : 'true'}>
+            <img src={look.image} data-demo-src={look.demoImage} alt={`${look.title} men's outfit inspiration`} loading={index === 0 ? 'eager' : 'lazy'} data-fallback />
+            <div class="image-placeholder" hidden><strong>LOOK IMAGE</strong><span>Upload your exact outfit photography in Catalogue Studio.</span></div>
+            <span class="men-festive-slide-tag">OCCASION EDIT</span><div class="men-festive-slide-title"><span>LOOK {String(index + 1).padStart(2,'0')} / 06</span><strong>{look.title}</strong><i>VIEW LOOK ↗</i></div>
+          </a>)}
+          <div class="men-festive-controls"><div class="men-festive-dots" role="group" aria-label="Choose occasion look">{occasionLooks.map((look, index) => <button type="button" class:list={{active:index===0}} data-festive-dot={index} aria-label={`Show ${look.title}`} aria-pressed={index===0}>{String(index+1).padStart(2,'0')}</button>)}</div><span>AUTO-ROTATES · PAUSES ON HOVER</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="men-featured-section site-shell">
+      <div class="men-section-head"><div><div class="eyebrow">SELECTED OUTFIT FORMULAS</div><h2 class="serif-display">Start with a look.</h2></div><a class="text-link" href="/looks/">VIEW ALL LOOKS ↗</a></div>
+      <div class="look-grid">{featuredLooks.map((look) => <LookCard look={look} />)}</div>
+    </section>
+
+    <section class="men-method-section site-shell"><div class="eyebrow">THE ATTIRE LABS METHOD</div><div class="men-method-grid"><h2 class="serif-display">Less guessing.<br /><em>Better getting dressed.</em></h2><div class="men-method-copy"><p>Each look begins with a real context: where you’re going, what the occasion calls for, the weather and how formal it feels. Then we break it into pieces you can source individually.</p><a class="text-link" href="/looks/">FIND A FORMULA FOR YOUR NEXT PLAN ↗</a></div></div></section>
+    <p class="disclosure site-disclosure site-shell">Affiliate note: some retailer links may be affiliate links. If you make a qualifying purchase, Attire Labs Co. may earn a commission at no additional cost to you. Prices in the starter catalogue are illustrative; verify retailer pricing and availability.</p>
+  </div>
+  <script>
+    const carousel = document.querySelector<HTMLElement>('[data-festive-carousel]');
+    if (carousel) {
+      const slides = [...carousel.querySelectorAll<HTMLElement>('[data-festive-slide]')];
+      const dots = [...carousel.querySelectorAll<HTMLButtonElement>('[data-festive-dot]')];
+      let current = 0;
+      let timer: ReturnType<typeof setInterval> | undefined;
+      const activate = (next: number) => {
+        current = (next + slides.length) % slides.length;
+        slides.forEach((slide, i) => { slide.classList.toggle('is-active', i === current); slide.setAttribute('aria-hidden', i === current ? 'false' : 'true'); });
+        dots.forEach((dot, i) => { dot.classList.toggle('active', i === current); dot.setAttribute('aria-pressed', i === current ? 'true' : 'false'); });
+      };
+      const start = () => { if (timer) clearInterval(timer); timer = setInterval(() => activate(current + 1), 5200); };
+      const stop = () => { if (timer) clearInterval(timer); timer = undefined; };
+      dots.forEach((dot, i) => dot.addEventListener('click', () => { activate(i); start(); }));
+      carousel.addEventListener('mouseenter', stop); carousel.addEventListener('mouseleave', start);
+      carousel.addEventListener('focusin', stop); carousel.addEventListener('focusout', start);
+      document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+      start();
+    }
+  </script>
+</BaseLayout>

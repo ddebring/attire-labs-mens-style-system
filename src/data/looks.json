@@ -1,0 +1,753 @@
+[
+  {
+    "id": "look-old-money-him",
+    "title": "Quiet Luxury, Every Day",
+    "slug": "quiet-luxury-every-day",
+    "category": "Office & Quiet Luxury",
+    "audience": "him",
+    "occasions": [
+      "old-money",
+      "office-smart",
+      "casual-everyday",
+      "business-casual"
+    ],
+    "styles": [
+      "old-money",
+      "quiet-luxury",
+      "minimal",
+      "smart-casual",
+      "tailored"
+    ],
+    "subtitle": "Clean proportions, thoughtful layers and a timeless palette that feels polished without trying too hard.",
+    "image": "/images/looks/quiet-luxury-every-day.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-oxford-shirt-001",
+      "mens-straight-trousers-001",
+      "mens-brown-loafers-001",
+      "mens-watch-001"
+    ],
+    "featured": true,
+    "tags": [
+      "timeless",
+      "neutral",
+      "menswear",
+      "men",
+      "attire-labs",
+      "office",
+      "city"
+    ],
+    "places": [
+      "office",
+      "city",
+      "cafe",
+      "restaurant"
+    ],
+    "dressCode": "smart-casual",
+    "seasons": [
+      "all-season",
+      "autumn",
+      "winter"
+    ],
+    "weather": [
+      "mild",
+      "cool",
+      "air-conditioned"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "stylingNotes": "Use a restrained palette, clean proportions and one structured layer. Keep the shoes crisp and the accessories quiet.",
+    "galleryImages": [
+      "/images/looks/mens-tailored-suit-02.jpg",
+      "/images/looks/mens-tailored-suit-03.jpg",
+      "/images/looks/mens-tailored-suit-04.jpg",
+      "/images/looks/mens-tailored-suit-05.jpg"
+    ]
+  },
+  {
+    "id": "look-city-weekend-him",
+    "title": "The City Weekend",
+    "slug": "the-city-weekend",
+    "category": "Casual & City",
+    "audience": "him",
+    "occasions": [
+      "casual-everyday",
+      "street-style",
+      "travel-weekend",
+      "movies-coffee",
+      "brunch-coffee"
+    ],
+    "styles": [
+      "casual",
+      "street-style",
+      "layering",
+      "minimal"
+    ],
+    "subtitle": "Comfortable layers with enough shape for a day out, a coffee stop or an unplanned detour.",
+    "image": "/images/looks/the-city-weekend.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-overshirt-001",
+      "mens-white-tee-001",
+      "mens-chinos-001",
+      "mens-white-sneakers-001"
+    ],
+    "featured": true,
+    "tags": [
+      "weekend",
+      "city",
+      "menswear",
+      "men",
+      "attire-labs",
+      "cafe"
+    ],
+    "places": [
+      "city",
+      "cafe",
+      "shopping",
+      "travel"
+    ],
+    "dressCode": "casual",
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn"
+    ],
+    "weather": [
+      "warm",
+      "mild"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "stylingNotes": "Build around comfortable trousers and a light overshirt. Keep the base layer simple so the proportions do the work."
+  },
+  {
+    "id": "look-move-him",
+    "title": "Off-Duty Movement",
+    "slug": "off-duty-movement-him",
+    "category": "Athleisure & Active",
+    "audience": "him",
+    "occasions": [
+      "athleisure",
+      "casual-everyday",
+      "travel-weekend"
+    ],
+    "styles": [
+      "athleisure",
+      "performance",
+      "casual"
+    ],
+    "subtitle": "A movement-first edit for training, errands and days built around being out and about.",
+    "image": "/images/looks/off-duty-movement-him.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-performance-joggers-001",
+      "mens-white-tee-001",
+      "mens-running-shoes-001"
+    ],
+    "featured": false,
+    "tags": [
+      "movement",
+      "sporty",
+      "menswear",
+      "men",
+      "attire-labs",
+      "gym",
+      "outdoors"
+    ],
+    "places": [
+      "gym",
+      "outdoors",
+      "travel",
+      "home"
+    ],
+    "dressCode": "athleisure",
+    "seasons": [
+      "all-season",
+      "summer"
+    ],
+    "weather": [
+      "hot",
+      "humid",
+      "warm"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "stylingNotes": "Prioritise movement, breathable fabrics and shoes that suit the activity. Keep the palette coordinated for errands after training."
+  },
+  {
+    "id": "look-date-night-him",
+    "title": "After Hours, Understated",
+    "slug": "date-night-him",
+    "category": "Date Night",
+    "audience": "him",
+    "occasions": [
+      "date-night",
+      "going-out",
+      "dinner-date"
+    ],
+    "styles": [
+      "evening",
+      "smart-casual",
+      "minimal",
+      "date-night"
+    ],
+    "subtitle": "A clean, confident edit for dinner plans, evening walks and nights that call for a sharper finish.",
+    "image": "/images/looks/date-night-him.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-oxford-shirt-001",
+      "mens-straight-trousers-001",
+      "mens-brown-loafers-001",
+      "mens-watch-001"
+    ],
+    "featured": true,
+    "tags": [
+      "after-dark",
+      "dinner",
+      "menswear",
+      "men",
+      "attire-labs",
+      "restaurant",
+      "bar"
+    ],
+    "places": [
+      "restaurant",
+      "bar",
+      "cinema",
+      "city"
+    ],
+    "dressCode": "date-night",
+    "seasons": [
+      "all-season",
+      "autumn",
+      "winter"
+    ],
+    "weather": [
+      "mild",
+      "cool",
+      "air-conditioned"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "stylingNotes": "Choose one sharper element—good shoes, a structured overshirt or a clean shirt—and keep everything else understated.",
+    "galleryImages": [
+      "/images/looks/mens-tailored-suit-02.jpg",
+      "/images/looks/mens-tailored-suit-03.jpg",
+      "/images/looks/mens-tailored-suit-04.jpg",
+      "/images/looks/mens-tailored-suit-05.jpg"
+    ]
+  },
+  {
+    "id": "look-festive-him",
+    "title": "The Celebration Classic",
+    "slug": "the-celebration-classic-look",
+    "category": "Indian Occasionwear",
+    "audience": "him",
+    "occasions": [
+      "family-gathering",
+      "wedding-guest",
+      "wedding-functions",
+      "family-celebration"
+    ],
+    "styles": [
+      "ethnic",
+      "festive",
+      "traditional",
+      "minimal"
+    ],
+    "subtitle": "A timeless Indian celebration edit for festive dinners, family occasions and wedding invites.",
+    "image": "/images/looks/the-celebration-classic-look.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-festive-classic-001",
+      "mens-straight-trousers-001",
+      "mens-brown-loafers-001",
+      "mens-watch-001"
+    ],
+    "featured": false,
+    "tags": [
+      "celebration",
+      "ethnic",
+      "menswear",
+      "men",
+      "attire-labs",
+      "wedding-venue",
+      "family-home"
+    ],
+    "places": [
+      "wedding-venue",
+      "family-home",
+      "temple",
+      "restaurant"
+    ],
+    "dressCode": "festive-ethnic",
+    "seasons": [
+      "all-season",
+      "autumn",
+      "winter"
+    ],
+    "weather": [
+      "warm",
+      "mild",
+      "air-conditioned"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "stylingNotes": "Let the kurta or celebration layer lead. Keep the fit clean, shoes polished and accessories minimal."
+  },
+  {
+    "id": "look-diwali-him",
+    "title": "Diwali Dinner",
+    "slug": "diwali-dinner-him",
+    "category": "Traditional & Family Occasions",
+    "audience": "him",
+    "occasions": [
+      "family-gathering",
+      "family-celebration"
+    ],
+    "styles": [
+      "ethnic",
+      "festive",
+      "traditional"
+    ],
+    "subtitle": "A thoughtful festive look for family dinners, hosting, gifting visits and celebration season.",
+    "image": "/images/looks/diwali-dinner-him.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-festive-classic-001",
+      "mens-straight-trousers-001",
+      "mens-leather-belt-001",
+      "mens-brown-loafers-001"
+    ],
+    "featured": true,
+    "tags": [
+      "diwali",
+      "family",
+      "menswear",
+      "men",
+      "attire-labs",
+      "family-home",
+      "restaurant"
+    ],
+    "places": [
+      "family-home",
+      "restaurant",
+      "temple"
+    ],
+    "dressCode": "festive-ethnic",
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "weather": [
+      "mild",
+      "cool",
+      "air-conditioned"
+    ],
+    "regions": [
+      "north-india",
+      "pan-india"
+    ],
+    "stylingNotes": "A festive kurta with considered trousers works for hosting and visiting. Add one refined accessory; avoid competing decorative elements."
+  },
+  {
+    "id": "look-wedding-guest-him",
+    "title": "The Wedding Invite",
+    "slug": "the-wedding-invite-him",
+    "category": "Wedding Guest",
+    "audience": "him",
+    "occasions": [
+      "wedding-guest",
+      "wedding-functions",
+      "family-gathering"
+    ],
+    "styles": [
+      "ethnic",
+      "wedding-guest",
+      "traditional"
+    ],
+    "subtitle": "An understated Indian occasion edit for wedding celebrations and important family gatherings.",
+    "image": "/images/looks/the-wedding-invite-him.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-festive-classic-001",
+      "mens-ethnic-jacket-001",
+      "mens-straight-trousers-001",
+      "mens-black-derby-001",
+      "mens-watch-001"
+    ],
+    "featured": true,
+    "tags": [
+      "wedding",
+      "ceremony",
+      "menswear",
+      "men",
+      "attire-labs",
+      "wedding-venue",
+      "hotel"
+    ],
+    "places": [
+      "wedding-venue",
+      "hotel",
+      "banquet"
+    ],
+    "dressCode": "wedding-guest",
+    "seasons": [
+      "all-season",
+      "autumn",
+      "winter",
+      "spring"
+    ],
+    "weather": [
+      "warm",
+      "mild",
+      "air-conditioned"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "stylingNotes": "Dress to the invitation and event time. A crisp traditional set and clean footwear are a reliable starting point; check the couple’s dress code."
+  },
+  {
+    "id": "look-campus-hours-him",
+    "title": "The Campus Edit",
+    "slug": "campus-hours-him",
+    "category": "College & Campus",
+    "audience": "him",
+    "occasions": [
+      "college-looks",
+      "casual-everyday",
+      "street-style",
+      "campus-event"
+    ],
+    "styles": [
+      "college",
+      "casual",
+      "street-style",
+      "layering"
+    ],
+    "subtitle": "Relaxed, repeatable outfits for classes, campus events and plans after lectures.",
+    "image": "/images/looks/campus-hours-him.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1622519407650-3df9883f76a5?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-white-tee-001",
+      "mens-overshirt-001",
+      "mens-chinos-001",
+      "mens-white-sneakers-001",
+      "mens-black-sunglasses-001"
+    ],
+    "featured": true,
+    "tags": [
+      "campus",
+      "students",
+      "menswear",
+      "men",
+      "attire-labs",
+      "cafe"
+    ],
+    "places": [
+      "campus",
+      "cafe",
+      "city"
+    ],
+    "dressCode": "casual",
+    "seasons": [
+      "all-season",
+      "summer",
+      "autumn"
+    ],
+    "weather": [
+      "hot",
+      "warm",
+      "mild"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "stylingNotes": "Keep the outfit repeatable: an easy tee or shirt, straight trousers and comfortable footwear. One layer gives the look more shape."
+  },
+  {
+    "id": "look-valentines-after-hours-him",
+    "title": "The Date-Night Edit",
+    "slug": "valentines-after-hours-him",
+    "category": "Date Night",
+    "audience": "him",
+    "occasions": [
+      "valentines-day",
+      "date-night",
+      "going-out"
+    ],
+    "styles": [
+      "evening",
+      "date-night",
+      "smart-casual"
+    ],
+    "subtitle": "Understated layers for a thoughtful date-night look that still feels like you.",
+    "image": "/images/looks/valentines-after-hours-him.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-knit-polo-001",
+      "mens-straight-trousers-001",
+      "mens-brown-loafers-001",
+      "mens-watch-001"
+    ],
+    "featured": false,
+    "tags": [
+      "valentines",
+      "romantic",
+      "menswear",
+      "men",
+      "attire-labs",
+      "restaurant",
+      "cafe"
+    ],
+    "places": [
+      "restaurant",
+      "cafe",
+      "cinema",
+      "city"
+    ],
+    "dressCode": "date-night",
+    "seasons": [
+      "winter",
+      "spring",
+      "all-season"
+    ],
+    "weather": [
+      "cool",
+      "mild",
+      "air-conditioned"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "stylingNotes": "Aim for intentional rather than formal. Fit, grooming and clean footwear matter more than adding extra pieces."
+  },
+  {
+    "id": "look-eid-gathering-him",
+    "title": "The Eid Gathering",
+    "slug": "eid-gathering-him",
+    "category": "Traditional & Family Occasions",
+    "audience": "him",
+    "occasions": [
+      "family-gathering",
+      "family-celebration"
+    ],
+    "styles": [
+      "ethnic",
+      "festive",
+      "traditional"
+    ],
+    "subtitle": "A polished celebration look for Eid prayers, family visits and festive evenings.",
+    "image": "/images/looks/eid-gathering-him.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-festive-classic-001",
+      "mens-pastel-kurta-001",
+      "mens-brown-loafers-001"
+    ],
+    "featured": false,
+    "tags": [
+      "eid",
+      "family",
+      "menswear",
+      "men",
+      "attire-labs",
+      "family-home",
+      "mosque"
+    ],
+    "places": [
+      "family-home",
+      "mosque",
+      "restaurant"
+    ],
+    "dressCode": "festive-ethnic",
+    "seasons": [
+      "all-season",
+      "spring",
+      "summer"
+    ],
+    "weather": [
+      "hot",
+      "warm",
+      "humid"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "stylingNotes": "Choose a breathable traditional set with room to move through prayers, family visits and an evening meal. Keep the finish neat."
+  },
+  {
+    "id": "look-holi-colour-play",
+    "title": "Holi Colour Play",
+    "slug": "holi-colour-play",
+    "category": "Traditional & Family Occasions",
+    "audience": "him",
+    "occasions": [
+      "casual-everyday"
+    ],
+    "styles": [
+      "festival",
+      "casual",
+      "easy-care"
+    ],
+    "subtitle": "Easy-to-wear pieces for a relaxed Holi gathering and the celebrations around it.",
+    "image": "/images/looks/holi-colour-play.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-white-tee-001",
+      "mens-chinos-001",
+      "mens-white-sneakers-001",
+      "mens-black-sunglasses-001"
+    ],
+    "featured": false,
+    "tags": [
+      "holi",
+      "colour",
+      "menswear",
+      "men",
+      "attire-labs",
+      "outdoors",
+      "family-home"
+    ],
+    "places": [
+      "outdoors",
+      "family-home"
+    ],
+    "dressCode": "festival-casual",
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "weather": [
+      "hot",
+      "warm"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "stylingNotes": "Keep it practical: washable basics, comfortable shoes and minimal accessories. Avoid pieces you would not want stained."
+  },
+  {
+    "id": "look-regional-harvest-edit",
+    "title": "The Regional Celebration Edit",
+    "slug": "regional-harvest-edit",
+    "category": "Traditional & Family Occasions",
+    "audience": "him",
+    "occasions": [
+      "family-gathering"
+    ],
+    "styles": [
+      "ethnic",
+      "festive",
+      "regional-tradition"
+    ],
+    "subtitle": "A flexible traditional-style starting point for regional new year, harvest and community celebrations.",
+    "image": "/images/looks/regional-harvest-edit.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-pastel-kurta-001",
+      "mens-straight-trousers-001",
+      "mens-brown-loafers-001"
+    ],
+    "featured": false,
+    "tags": [
+      "regional",
+      "harvest",
+      "menswear",
+      "men",
+      "attire-labs",
+      "family-home",
+      "temple"
+    ],
+    "places": [
+      "family-home",
+      "temple",
+      "outdoors"
+    ],
+    "dressCode": "festive-ethnic",
+    "seasons": [
+      "winter",
+      "spring",
+      "summer"
+    ],
+    "weather": [
+      "warm",
+      "hot",
+      "mild"
+    ],
+    "regions": [
+      "north-india",
+      "south-india",
+      "east-india",
+      "west-india",
+      "pan-india"
+    ],
+    "stylingNotes": "Start with the local tradition and event setting. Choose breathable fabrics where needed and respect family or community dress expectations."
+  },
+  {
+    "id": "look-wedding-season-him",
+    "title": "The Wedding Season Edit",
+    "slug": "wedding-season-him",
+    "category": "Wedding Guest",
+    "audience": "him",
+    "occasions": [
+      "wedding-functions",
+      "wedding-guest",
+      "family-gathering"
+    ],
+    "styles": [
+      "ethnic",
+      "wedding-guest",
+      "traditional"
+    ],
+    "subtitle": "Considered styling for ceremonies, receptions and the many invitations in between.",
+    "image": "/images/looks/wedding-season-him.jpg",
+    "demoImage": "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1500&q=85",
+    "productIds": [
+      "mens-festive-classic-001",
+      "mens-ethnic-jacket-001",
+      "mens-straight-trousers-001",
+      "mens-black-derby-001",
+      "mens-watch-001"
+    ],
+    "featured": false,
+    "tags": [
+      "wedding",
+      "ceremony",
+      "menswear",
+      "men",
+      "attire-labs",
+      "wedding-venue",
+      "hotel"
+    ],
+    "places": [
+      "wedding-venue",
+      "hotel",
+      "banquet",
+      "family-home"
+    ],
+    "dressCode": "wedding-guest",
+    "seasons": [
+      "all-season",
+      "autumn",
+      "winter",
+      "spring"
+    ],
+    "weather": [
+      "warm",
+      "mild",
+      "air-conditioned"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "stylingNotes": "Plan for the full event, not just photos: check venue, timing and dress code, then build the look around one strong traditional piece."
+  }
+]
