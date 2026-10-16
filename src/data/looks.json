@@ -749,5 +749,49 @@
       "pan-india"
     ],
     "stylingNotes": "Plan for the full event, not just photos: check venue, timing and dress code, then build the look around one strong traditional piece."
+  },
+  {
+    "id": "look-qurte-zip-look-winters-black",
+    "slug": "qurte-zip-look-winters-black",
+    "title": "Qurte Zip look winters black",
+    "subtitle": "Quarterzip jacket",
+    "audience": "him",
+    "category": "Casual & City",
+    "occasions": [
+      "casual-everyday",
+      "office-smart",
+      "business-casual",
+      "old-money"
+    ],
+    "styles": [
+      "casual"
+    ],
+    "places": [
+      "city"
+    ],
+    "dressCode": "casual",
+    "seasons": [
+      "autumn",
+      "winter"
+    ],
+    "weather": [
+      "mild",
+      "cool"
+    ],
+    "regions": [
+      "pan-india"
+    ],
+    "tags": [
+      "men"
+    ],
+    "stylingNotes": "It looks classy",
+    "image": "/images/looks/qurte-zip-look-winters-black.png",
+    "galleryImages": [
+      "/images/looks/qurte-zip-look-winters-black-02.png",
+      "/images/looks/qurte-zip-look-winters-black-03.png",
+      "/images/looks/qurte-zip-look-winters-black-04.png"
+    ],
+    "productIds": [],
+    "featured": false
   }
 ]
